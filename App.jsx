@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
 function App() {
-  const [task, setTask] = useState([]);
+  const [tasks, setTask] = useState([]);
   const [text,setText]=useState("");
   const addTask=()=>{
-    setTask([...task,{name:text,completed:false}]);
+    setTask([...tasks,{name:text,completed:false}]);
     setText("");
   }
   const deleteTask=(index)=>{
-    setTask(task.filter((_,i)=>i!==index));
+    setTask(tasks.filter((_,i)=>i!==index));
   }
   return (
     <div>
@@ -19,9 +19,9 @@ function App() {
     onChange={(e)=>setText(e.target.value)} />
     <button onClick={addTask}>Add</button>
     <ul>
-      {task.map((task,index)=>(
+      {tasks.map((task,index)=>(
         <li key={index}>
-          <input type="checkbox" checked={task.completed} />
+          <input type="checkbox" checked={tasks.completed} />
           <span>{task.name}</span>
           <button onClick={()=>deleteTask(index)}>delete</button>
         </li>
